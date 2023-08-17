@@ -360,7 +360,7 @@ class Authenticate:
 
         register_user_form.subheader(form_name)
         new_email = register_user_form.text_input("Email")
-        new_username = register_user_form.text_input("Username").lower()
+        new_username = register_user_form.text_input("Username").lower().strip()
         new_name = register_user_form.text_input("Name")
         new_password = register_user_form.text_input("Password", type="password")
         new_password_repeat = register_user_form.text_input("Repeat password", type="password")
