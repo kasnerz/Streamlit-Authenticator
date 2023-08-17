@@ -367,6 +367,9 @@ class Authenticate:
 
         if register_user_form.form_submit_button("Register"):
 
+            # lowercase email to prevent duplicates with different casing
+            new_email = new_email.lower()
+
             if len(new_email) and len(new_username) and len(new_name) and len(new_password) > 0:
                 if new_username not in self.credentials["usernames"]:
                     if new_password == new_password_repeat:
