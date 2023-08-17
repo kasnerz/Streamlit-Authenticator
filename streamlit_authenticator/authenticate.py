@@ -201,7 +201,7 @@ class Authenticate:
                     login_form = st.sidebar.form("Login")
 
                 login_form.subheader(form_name)
-                self.username = login_form.text_input("Username").lower()
+                self.username = login_form.text_input("Username").lower().strip()
                 st.session_state["username"] = self.username
                 self.password = login_form.text_input("Password", type="password")
 
