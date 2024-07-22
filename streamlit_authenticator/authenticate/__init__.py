@@ -291,7 +291,7 @@ class Authenticate:
         new_email = register_user_form.text_input('Email' if 'Email' not in fields
                                                   else fields['Email'])
         new_username = register_user_form.text_input('Username' if 'Username' not in fields
-                                                     else fields['Username']).lower()
+                                                     else fields['Username']).lower().strip()
         new_password = register_user_form.text_input('Password' if 'Password' not in fields
                                                      else fields['Password'], type='password')
         new_password_repeat = register_user_form.text_input('Repeat password'
