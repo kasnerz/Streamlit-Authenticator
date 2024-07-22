@@ -300,6 +300,7 @@ class Authenticate:
                                                             type='password')
         if register_user_form.form_submit_button('Register' if 'Register' not in fields
                                                  else fields['Register']):
+            new_email = new_email.lower()
             return self.authentication_handler.register_user(new_password, new_password_repeat,
                                                              pre_authorization, new_username,
                                                              new_name, new_email, domains)
