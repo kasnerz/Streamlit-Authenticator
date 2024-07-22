@@ -195,7 +195,7 @@ class Authenticate:
                     login_form = st.sidebar.form('Login')
                 login_form.subheader('Login' if 'Form name' not in fields else fields['Form name'])
                 username = login_form.text_input('Username' if 'Username' not in fields
-                                                 else fields['Username']).lower()
+                                                 else fields['Username']).lower().strip()
                 password = login_form.text_input('Password' if 'Password' not in fields
                                                  else fields['Password'], type='password')
                 if login_form.form_submit_button('Login' if 'Login' not in fields
