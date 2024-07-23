@@ -187,7 +187,7 @@ class Authenticate:
             token = self.cookie_handler.get_cookie()
             if token:
                 self.authentication_handler.execute_login(token=token)
-            time.sleep(0.7)
+            # time.sleep(0.7)
             if not st.session_state['authentication_status']:
                 if location == 'main':
                     login_form = st.form('Login', clear_on_submit=clear_on_submit)
