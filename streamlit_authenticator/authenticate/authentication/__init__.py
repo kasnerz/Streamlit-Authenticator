@@ -66,7 +66,7 @@ class AuthenticationHandler:
             st.session_state['logout'] = None
 
     def normalize_username(self, username: str) -> str:
-        username = unidecode(username.lower().strip().replace(' ', '_').replace('?', '_').replace('@', '_'))
+        username = unidecode(username.lower().strip().replace(' ', '_').replace('?', '_'))
         return username
     
     def check_credentials(self, username: str, password: str,
