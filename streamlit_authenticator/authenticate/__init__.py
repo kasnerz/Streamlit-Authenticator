@@ -94,7 +94,9 @@ class Authenticate:
         forgot_password_form.subheader('Forget password' if 'Form name' not in fields
                                        else fields['Form name'])
         username = forgot_password_form.text_input('Username' if 'Username' not in fields
-                                                   else fields['Username']).lower()
+                                                   else fields['Username'])
+        
+        username = self.authentication_handler.normalize_username(username)
 
         if forgot_password_form.form_submit_button('Submit' if 'Submit' not in fields
                                                    else fields['Submit']):
@@ -195,7 +197,8 @@ class Authenticate:
                     login_form = st.sidebar.form('Login')
                 login_form.subheader('Login' if 'Form name' not in fields else fields['Form name'])
                 username = login_form.text_input('Username' if 'Username' not in fields
-                                                 else fields['Username']).lower().strip()
+                                                 else fields['Username'])
+                username = self.authentication_handler.normalize_username(username)
                 password = login_form.text_input('Password' if 'Password' not in fields
                                                  else fields['Password'], type='password')
                 if login_form.form_submit_button('Login' if 'Login' not in fields
@@ -343,7 +346,7 @@ class Authenticate:
             reset_password_form = st.sidebar.form('Reset password')
         reset_password_form.subheader('Reset password' if 'Form name' not in fields
                                       else fields['Form name'])
-        username = username.lower()
+        username = self.authentication_handler.normalize_username(username)
         password = reset_password_form.text_input('Current password'
                                                   if 'Current password' not in fields
                                                   else fields['Current password'],
@@ -400,7 +403,7 @@ class Authenticate:
             update_user_details_form = st.sidebar.form('Update user details')
         update_user_details_form.subheader('Update user details' if 'Form name' not in fields
                                            else fields['Form name'])
-        username = username.lower()
+        username = self.authentication_handler.normalize_username(username)
         update_user_details_form_fields = ['Name' if 'Name' not in fields else fields['Name'],
                                            'Email' if 'Email' not in fields else fields['Email']]
         field = update_user_details_form.selectbox('Field' if 'Field' not in fields

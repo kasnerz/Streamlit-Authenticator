@@ -8,6 +8,7 @@ Libraries imported:
 """
 
 from typing import Optional
+from unidecode import unidecode
 import streamlit as st
 
 from ...utilities.hasher import Hasher
@@ -63,6 +64,11 @@ class AuthenticationHandler:
             st.session_state['username'] = None
         if 'logout' not in st.session_state:
             st.session_state['logout'] = None
+
+    def normalize_username(self, username: str) -> str:
+        username = unidecode(username.lower().strip().replace(' ', '_').replace('?', '_').replace('@', '_'))
+        return username
+    
     def check_credentials(self, username: str, password: str,
                           max_concurrent_users: Optional[int]=None,
                           max_login_attempts: Optional[int]=None) -> bool:
@@ -85,6 +91,8 @@ class AuthenticationHandler:
         bool
             Validity of the entered credentials.
         """
+        username = self.normalize_username(username)
+
         if isinstance(max_concurrent_users, int):
             if self._count_concurrent_users() > max_concurrent_users - 1:
                 raise LoginError('Maximum number of concurrent users exceeded')
