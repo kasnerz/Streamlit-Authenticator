@@ -26,6 +26,7 @@ setuptools.setup(
         "bcrypt >= 3.1.7",
         "PyYAML >= 5.3.1",
         "streamlit >= 1.25.0",
-        "extra-streamlit-components >= 0.1.70"
+        "extra-streamlit-components >= 0.1.70",
+        "unidecode >= 1.3.6"
     ],
 )
