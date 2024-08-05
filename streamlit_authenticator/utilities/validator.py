@@ -79,6 +79,6 @@ class Validator:
         bool
             Validity of entered username.
         """
-        pattern = r"^[a-zA-Z0-9_-.?]{1,50}$"
+        pattern = r"^[a-zA-Z0-9_\-.?]{1,50}$"
         return bool(re.match(pattern, username))
     
