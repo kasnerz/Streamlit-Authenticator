@@ -50,7 +50,7 @@ class CookieHandler:
         """
         if st.session_state['logout']:
             return False
-        self.token = st.context.cookies[self.cookie_name]
+        self.token = st.context.cookies.get(self.cookie_name)
         # self.token = self.cookie_manager.get(self.cookie_name)
         if self.token is not None:
             self.token = self._token_decode()
